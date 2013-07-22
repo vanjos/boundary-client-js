@@ -16,9 +16,16 @@ window.onload = function () {
         if ( data.state.hasOwnProperty(key))
         {
                         meterArray[i] = new Array();
-                        meterArray[i][0] = data.state[key]["exportAddress"];
-                        meterArray[i][1] = data.state[key]["meterId"];
-                        meterArray[i][2] = data.state[key]["connected"];
+			if ( data.state[key]["connected"] == false )
+			{
+				meterArray[i] = data.state[key];
+			}
+			else
+			{
+                        	meterArray[i][0] = data.state[key]["exportAddress"];
+                        	meterArray[i][1] = data.state[key]["meterId"];
+                        	meterArray[i][2] = data.state[key]["connected"];
+			}
                 i = i + 1 ;
         }
 
@@ -38,10 +45,14 @@ window.onload = function () {
     for (var i in data )
     {
 
-                var node=document.createElement("LI");
-                var textnode=document.createTextNode("address:" + data[i][0] + " ,id:" + data[i][1] + " ,connected:" + data[i][2]);
-                node.appendChild(textnode);
-                replacement.appendChild(node);
+		if ( data[i][2] == true)
+		{
+                	var node=document.createElement("LI");
+                	var textnode=document.createTextNode("\nid:" + data[i][1]);
+                	node.appendChild(textnode);
+                	replacement.appendChild(node);
+			print("NODE CONNECTED: " + data[i][1]);
+		}
     }
     input.parentElement.replaceChild(replacement,input);
     

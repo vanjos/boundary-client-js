@@ -4,7 +4,7 @@ var bndry = bndry || {};
 (function (bndry, undefined) {
   bndry.auth = {
     cometd: 'https://api.boundary.com/streaming',
-    org_id: <account org id>,
-    apikey: <account api key>
+    org_id: 'Ec16ywGmhpCPgh0eUG6LTwT1AP7',
+    apikey: 'EtRXEo6hYpTTXZqo5XZH8IKsZgD'
   };
 })(bndry);
